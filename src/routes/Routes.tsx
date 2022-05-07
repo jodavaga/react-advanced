@@ -1,8 +1,13 @@
+import { lazy, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 
-import Exams from "../components/templates/Exams/Exams";
-import Home from "../components/templates/Home/Home";
-import Profile from "../components/templates/Profile/Profile";
+// Components
+import Loading from "../components/molecules/Loading/Loading";
+
+// Lazy imports
+const Home = lazy(() => import("../components/templates/Home/Home"));
+const Exams = lazy(() => import("../components/templates/Exams/Exams"));
+const Profile = lazy(() => import("../components/templates/Profile/Profile"));
 
 const mainRoutes = [
   { path: "", element: <Home /> },
@@ -12,11 +17,13 @@ const mainRoutes = [
 
 const MainContentNavigation = () => {
   return (
-    <Routes>
-      {mainRoutes.map((route, index) => (
-        <Route key={index} {...route} />
-      ))}
-    </Routes>
+    <Suspense fallback={<Loading />}>
+      <Routes>
+        {mainRoutes.map((route, index) => (
+          <Route key={index} {...route} />
+        ))}
+      </Routes>
+    </Suspense>
   );
 };
 

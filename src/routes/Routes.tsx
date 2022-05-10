@@ -1,30 +1,30 @@
-import { lazy, Suspense } from "react";
-import { Routes, Route } from "react-router-dom";
+import { lazy } from "react";
 
-// Components
-import Loading from "../components/molecules/Loading/Loading";
+import { IRoute } from "./types";
 
 // Lazy imports
-const Home = lazy(() => import("../components/templates/Home/Home"));
-const Exams = lazy(() => import("../components/templates/Exams/Exams"));
-const Profile = lazy(() => import("../components/templates/Profile/Profile"));
+const Home = lazy(
+  () =>
+    import(
+      /* webpackChunkName: "Home_page" */ "../components/screens/Home/Home"
+    )
+);
+const Exams = lazy(
+  () =>
+    import(
+      /* webpackChunkName: "Exams_page" */ "../components/screens/Exams/Exams"
+    )
+);
+const Profile = lazy(() => import("../components/screens/Profile/Profile"));
 
-const mainRoutes = [
-  { path: "", element: <Home /> },
-  { path: "profile", element: <Profile /> },
-  { path: "exams-report", element: <Exams /> },
+// All routes array
+export const mainRoutes: IRoute[] = [
+  { to: "/", path: "", Component: <Home />, name: "Home" },
+  { to: "/profile", path: "profile", Component: <Profile />, name: "Profile" },
+  {
+    to: "/exams-report",
+    path: "exams-report",
+    Component: <Exams />,
+    name: "Exams",
+  },
 ];
-
-const MainContentNavigation = () => {
-  return (
-    <Suspense fallback={<Loading />}>
-      <Routes>
-        {mainRoutes.map((route, index) => (
-          <Route key={index} {...route} />
-        ))}
-      </Routes>
-    </Suspense>
-  );
-};
-
-export default MainContentNavigation;

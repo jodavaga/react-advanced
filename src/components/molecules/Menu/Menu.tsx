@@ -1,4 +1,8 @@
 import { NavLink } from "react-router-dom";
+
+// Routes
+import { mainRoutes } from "../../../routes/Routes";
+
 import logo from "../../../assets/logo.svg";
 
 const Menu = () => {
@@ -6,30 +10,16 @@ const Menu = () => {
     <nav>
       <img src={logo} alt="" />
       <ul>
-        <li>
-          <NavLink
-            to="/"
-            className={({ isActive }) => (isActive ? "nav-active" : "")}
-          >
-            Home
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="/profile"
-            className={({ isActive }) => (isActive ? "nav-active" : "")}
-          >
-            Profile
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="/exams-report"
-            className={({ isActive }) => (isActive ? "nav-active" : "")}
-          >
-            Exams
-          </NavLink>
-        </li>
+        {mainRoutes.map((route) => (
+          <li key={route.path}>
+            <NavLink
+              to={route.to}
+              className={({ isActive }) => (isActive ? "nav-active" : "")}
+            >
+              {route.name}
+            </NavLink>
+          </li>
+        ))}
       </ul>
     </nav>
   );

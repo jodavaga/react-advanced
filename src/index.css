@@ -14,13 +14,53 @@ code {
     monospace;
 }
 
+li {
+  list-style: none;
+}
 
-.main-layout {
+.dashboard-nav a.nav-active, .main-nav a.nav-active {
+  color: grey; 
+  transition: all .3s ease-out;
+}
+
+/* ===== 
+** Main layout styles 
+====== */
+
+.main-nav {
+  background-color: #363a45;
+  display: flex;
+  height: 5vh;
+}
+
+.main-nav ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.main-nav li {
+ margin: 0 20px;
+}
+
+.main-nav li a {
+  color: white;
+  font-size: 1.2rem;
+  text-decoration: none;
+}
+
+
+/* ===== 
+** Dashboard layout styles 
+====== */
+
+.dashboard-layout {
   display: flex;
   flex-direction: row;
 }
 
-nav {
+.dashboard-nav {
   background-color: #363a45;
   height: 100vh;
   margin-right: 15px;
@@ -28,7 +68,7 @@ nav {
   text-align: center;
   width: 250px;
 }
-nav ul {
+.dashboard-nav ul {
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -36,18 +76,14 @@ nav ul {
   padding-left: 0;
 }
 
-nav li {
+.dashboard-nav li {
   list-style: none;
   margin-bottom: 10px;
 }
 
-nav li a {
+.dashboard-nav li a {
   color: white;
   font-size: 1.2rem;
   text-decoration: none;
 }
 
-.nav-active {
-  color: grey;
-  transition: all .3s ease-out;
-}

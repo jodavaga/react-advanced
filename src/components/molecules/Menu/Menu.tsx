@@ -1,16 +1,16 @@
 import { NavLink } from "react-router-dom";
 
 // Routes
-import { mainRoutes } from "../../../routes/Routes";
+import { dashboardRoutes } from "../../../routes/Routes";
 
 import logo from "../../../assets/logo.svg";
 
 const Menu = () => {
   return (
-    <nav>
+    <nav className="dashboard-nav">
       <img src={logo} alt="" />
       <ul>
-        {mainRoutes.map((route) => (
+        {dashboardRoutes.map((route) => (
           <li key={route.path}>
             <NavLink
               to={route.to}

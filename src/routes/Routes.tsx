@@ -1,25 +1,27 @@
 import { lazy } from "react";
+import Home from "../components/screens/Home";
 
-import Login from "../components/screens/Login/Login";
+import Login from "../components/screens/Login";
 // dashboard Components
-import Exams from "../components/screens/Exams/Exams";
-import Profile from "../components/screens/Profile/Profile";
+import Exams from "../components/templates/Exams/Exams";
+import Profile from "../components/templates/Profile/Profile";
 import { IRoute } from "./types";
 
 // Lazy imports
-const DashboardLayout = lazy(
+const Dashboard = lazy(
   () =>
     import(
-      /* webpackChunkName: "Dashboard_layout" */ "../components/layout/DashboardLayout"
+      /* webpackChunkName: "Dashboard_layout" */ "../components/screens/Dashboard"
     )
 );
 
 export const mainRoutes: IRoute[] = [
-  { to: "login", path: "login", Component: <Login />, name: "Login" },
+  { to: "/", path: "", Component: <Home />, name: "Home" },
+  { to: "/login", path: "login", Component: <Login />, name: "Login" },
   {
-    to: "dashboard",
+    to: "/dashboard",
     path: "/dashboard/*",
-    Component: <DashboardLayout />,
+    Component: <Dashboard />,
     name: "Dashboard",
   },
 ];

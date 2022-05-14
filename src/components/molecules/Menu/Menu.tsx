@@ -21,6 +21,10 @@ const Menu = () => {
           </li>
         ))}
       </ul>
+
+      <button>
+        <NavLink to="/login">Logout</NavLink>
+      </button>
     </nav>
   );
 };
